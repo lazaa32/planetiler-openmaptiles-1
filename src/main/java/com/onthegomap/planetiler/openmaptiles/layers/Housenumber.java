@@ -32,52 +32,34 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
- */
-package com.onthegomap.planetiler.basemap.layers;
-
-import static com.onthegomap.planetiler.basemap.util.Utils.nullIfEmpty;
-import static com.onthegomap.planetiler.basemap.util.Utils.nullOrEmpty;
+*/
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import com.onthegomap.planetiler.FeatureCollector;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
-import com.onthegomap.planetiler.basemap.util.LanguageUtils;
-import com.onthegomap.planetiler.basemap.util.Utils;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
-import com.onthegomap.planetiler.expression.MultiExpression;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
 import com.onthegomap.planetiler.stats.Stats;
 import com.onthegomap.planetiler.util.Translations;
 
 /**
- * Defines the logic for generating map elements in the {@code aerodrome_label} layer from source features.
+ * Defines the logic for generating map elements in the {@code housenumber} layer from source features.
  * <p>
  * This class is ported to Java from
- * <a href="https://github.com/openmaptiles/openmaptiles/tree/master/layers/aerodrome_label">OpenMapTiles
- * aerodrome_layer sql files</a>.
+ * <a href="https://github.com/openmaptiles/openmaptiles/tree/master/layers/housenumber">OpenMapTiles housenumber sql
+ * files</a>.
  */
-public class AerodromeLabel implements
-  OpenMapTilesSchema.AerodromeLabel,
-  Tables.OsmAerodromeLabelPoint.Handler {
+public class Housenumber implements
+  OpenMapTilesSchema.Housenumber,
+  Tables.OsmHousenumberPoint.Handler {
 
-  private final MultiExpression.Index<String> classLookup;
-  private final Translations translations;
-
-  public AerodromeLabel(Translations translations, PlanetilerConfig config, Stats stats) {
-    this.classLookup = FieldMappings.Class.index();
-    this.translations = translations;
-  }
+  public Housenumber(Translations translations, PlanetilerConfig config, Stats stats) {}
 
   @Override
-  public void process(Tables.OsmAerodromeLabelPoint element, FeatureCollector features) {
-    String clazz = classLookup.getOrElse(element.source(), FieldValues.CLASS_OTHER);
-    boolean important = !nullOrEmpty(element.iata()) && FieldValues.CLASS_INTERNATIONAL.equals(clazz);
-    features.centroid(LAYER_NAME)
+  public void process(Tables.OsmHousenumberPoint element, FeatureCollector features) {
+    features.centroidIfConvex(LAYER_NAME)
       .setBufferPixels(BUFFER_SIZE)
-      .setMinZoom(important ? 8 : 10)
-      .putAttrs(LanguageUtils.getNames(element.source().tags(), translations))
-      .putAttrs(Utils.elevationTags(element.ele()))
-      .setAttr(Fields.IATA, nullIfEmpty(element.iata()))
-      .setAttr(Fields.ICAO, nullIfEmpty(element.icao()))
-      .setAttr(Fields.CLASS, clazz);
+      .setAttr(Fields.HOUSENUMBER, element.housenumber())
+      .setMinZoom(14);
   }
 }

@@ -1,14 +1,14 @@
-package com.onthegomap.planetiler.basemap;
+package com.onthegomap.planetiler.openmaptiles;
 
 import com.onthegomap.planetiler.Planetiler;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
 import com.onthegomap.planetiler.config.Arguments;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
 import java.nio.file.Path;
 
 /**
- * Main entrypoint for generating a map using the basemap schema.
+ * Main entrypoint for generating a map using the openmaptiles schema.
  */
-public class BasemapMain {
+public class OpenMapTilesMain {
 
   public static void main(String[] args) throws Exception {
     run(Arguments.fromArgsOrConfigFile(args));
@@ -29,21 +29,21 @@ public class BasemapMain {
       .setDefaultLanguages(OpenMapTilesSchema.LANGUAGES)
       .fetchWikidataNameTranslations(sourcesDir.resolve("wikidata_names.json"))
       // defer creation of the profile because it depends on data from the runner
-      .setProfile(BasemapProfile::new)
+      .setProfile(OpenMapTilesProfile::new)
       // override any of these with arguments: --osm_path=... or --osm_url=...
       // or OSM_PATH=... OSM_URL=... environmental argument
       // or osm_path=... osm_url=... in a config file
-      .addShapefileSource("EPSG:3857", BasemapProfile.LAKE_CENTERLINE_SOURCE,
+      .addShapefileSource("EPSG:3857", OpenMapTilesProfile.LAKE_CENTERLINE_SOURCE,
         sourcesDir.resolve("lake_centerline.shp.zip"),
         // was previously using this old build from 2016: https://github.com/lukasmartinelli/osm-lakelines/releases/download/v0.9/lake_centerline.shp.zip
         "https://github.com/acalcutt/osm-lakelines/releases/download/latest/lake_centerline.shp.zip")
-      .addShapefileSource(BasemapProfile.WATER_POLYGON_SOURCE,
+      .addShapefileSource(OpenMapTilesProfile.WATER_POLYGON_SOURCE,
         sourcesDir.resolve("water-polygons-split-3857.zip"),
         "https://osmdata.openstreetmap.de/download/water-polygons-split-3857.zip")
-      .addNaturalEarthSource(BasemapProfile.NATURAL_EARTH_SOURCE,
+      .addNaturalEarthSource(OpenMapTilesProfile.NATURAL_EARTH_SOURCE,
         sourcesDir.resolve("natural_earth_vector.sqlite.zip"),
         "https://naciscdn.org/naturalearth/packages/natural_earth_vector.sqlite.zip")
-      .addOsmSource(BasemapProfile.OSM_SOURCE,
+      .addOsmSource(OpenMapTilesProfile.OSM_SOURCE,
         sourcesDir.resolve(area.replaceAll("[^a-zA-Z]+", "_") + ".osm.pbf"),
         "planet".equalsIgnoreCase(area) ? ("aws:latest") : ("geofabrik:" + area))
       // override with --mbtiles=... argument or MBTILES=... env var or mbtiles=... in a config file

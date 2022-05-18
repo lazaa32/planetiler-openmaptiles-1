@@ -33,17 +33,17 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.FeatureMerge;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.expression.MultiExpression;
 import com.onthegomap.planetiler.geo.GeometryException;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.stats.Stats;
 import com.onthegomap.planetiler.util.Translations;
@@ -63,9 +63,9 @@ import java.util.Set;
  */
 public class Landcover implements
   OpenMapTilesSchema.Landcover,
-  BasemapProfile.NaturalEarthProcessor,
+  OpenMapTilesProfile.NaturalEarthProcessor,
   Tables.OsmLandcoverPolygon.Handler,
-  BasemapProfile.FeaturePostProcessor {
+  OpenMapTilesProfile.FeaturePostProcessor {
 
   /*
    * Large ice areas come from natural earth and the rest come from OpenStreetMap at higher zoom

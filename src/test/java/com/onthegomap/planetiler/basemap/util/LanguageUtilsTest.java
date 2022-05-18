@@ -1,7 +1,7 @@
-package com.onthegomap.planetiler.basemap.util;
+package com.onthegomap.planetiler.openmaptiles.util;
 
 import static com.onthegomap.planetiler.TestUtils.assertSubmap;
-import static com.onthegomap.planetiler.basemap.util.LanguageUtils.containsOnlyLatinCharacters;
+import static com.onthegomap.planetiler.openmaptiles.util.LanguageUtils.containsOnlyLatinCharacters;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;

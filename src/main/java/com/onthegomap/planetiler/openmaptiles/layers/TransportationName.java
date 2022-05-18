@@ -33,12 +33,12 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
-import static com.onthegomap.planetiler.basemap.layers.Transportation.highwayClass;
-import static com.onthegomap.planetiler.basemap.layers.Transportation.highwaySubclass;
-import static com.onthegomap.planetiler.basemap.layers.Transportation.isFootwayOrSteps;
-import static com.onthegomap.planetiler.basemap.util.Utils.*;
+import static com.onthegomap.planetiler.openmaptiles.layers.Transportation.highwayClass;
+import static com.onthegomap.planetiler.openmaptiles.layers.Transportation.highwaySubclass;
+import static com.onthegomap.planetiler.openmaptiles.layers.Transportation.isFootwayOrSteps;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.*;
 
 import com.carrotsearch.hppc.LongArrayList;
 import com.carrotsearch.hppc.LongByteMap;
@@ -48,12 +48,12 @@ import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.FeatureMerge;
 import com.onthegomap.planetiler.ForwardingProfile;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
-import com.onthegomap.planetiler.basemap.util.LanguageUtils;
 import com.onthegomap.planetiler.collection.Hppc;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
+import com.onthegomap.planetiler.openmaptiles.util.LanguageUtils;
 import com.onthegomap.planetiler.reader.osm.OsmElement;
 import com.onthegomap.planetiler.stats.Stats;
 import com.onthegomap.planetiler.util.Parse;
@@ -79,8 +79,8 @@ public class TransportationName implements
   Tables.OsmHighwayLinestring.Handler,
   Tables.OsmAerialwayLinestring.Handler,
   Tables.OsmShipwayLinestring.Handler,
-  BasemapProfile.FeaturePostProcessor,
-  BasemapProfile.IgnoreWikidata,
+  OpenMapTilesProfile.FeaturePostProcessor,
+  OpenMapTilesProfile.IgnoreWikidata,
   ForwardingProfile.OsmNodePreprocessor,
   ForwardingProfile.OsmWayPreprocessor {
 

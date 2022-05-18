@@ -1,4 +1,4 @@
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import com.onthegomap.planetiler.geo.GeoUtils;
 import java.util.List;

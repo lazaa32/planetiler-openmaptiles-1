@@ -1,4 +1,4 @@
-package com.onthegomap.planetiler.basemap;
+package com.onthegomap.planetiler.openmaptiles;
 
 import static com.onthegomap.planetiler.expression.Expression.*;
 import static java.util.stream.Collectors.joining;
@@ -161,9 +161,9 @@ public class Generate {
       tables.putAll(layer.tables);
     }
 
-    String packageName = "com.onthegomap.planetiler.basemap.generated";
+    String packageName = "com.onthegomap.planetiler.openmaptiles.generated";
     String[] packageParts = packageName.split("\\.");
-    Path output = Path.of("planetiler-basemap", "src", "main", "java")
+    Path output = Path.of("planetiler-openmaptiles", "src", "main", "java")
       .resolve(Path.of(packageParts[0], Arrays.copyOfRange(packageParts, 1, packageParts.length)));
 
     FileUtils.deleteDirectory(output);
@@ -188,7 +188,7 @@ public class Generate {
         import com.onthegomap.planetiler.config.PlanetilerConfig;
         import com.onthegomap.planetiler.stats.Stats;
         import com.onthegomap.planetiler.expression.MultiExpression;
-        import com.onthegomap.planetiler.basemap.Layer;
+        import com.onthegomap.planetiler.openmaptiles.Layer;
         import com.onthegomap.planetiler.util.Translations;
         import java.util.List;
         import java.util.Map;
@@ -225,7 +225,7 @@ public class Generate {
           info.languages.stream().map(Format::quote).collect(joining(", ")),
           layers.stream()
             .map(
-              l -> "new com.onthegomap.planetiler.basemap.layers.%s(translations, config, stats)"
+              l -> "new com.onthegomap.planetiler.openmaptiles.layers.%s(translations, config, stats)"
                 .formatted(lowerUnderscoreToUpperCamel(l.layer.id)))
             .collect(joining("," + LINE_SEPARATOR))
             .indent(6).trim()

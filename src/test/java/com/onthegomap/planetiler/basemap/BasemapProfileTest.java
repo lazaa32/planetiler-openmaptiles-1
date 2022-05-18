@@ -1,4 +1,4 @@
-package com.onthegomap.planetiler.basemap;
+package com.onthegomap.planetiler.openmaptiles;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,12 +11,12 @@ import com.onthegomap.planetiler.util.Wikidata;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class BasemapProfileTest {
+class OpenMapTilesProfileTest {
 
   private final Wikidata.WikidataTranslations wikidataTranslations = new Wikidata.WikidataTranslations();
   private final Translations translations = Translations.defaultProvider(List.of("en", "es", "de"))
     .addTranslationProvider(wikidataTranslations);
-  private final BasemapProfile profile = new BasemapProfile(translations, PlanetilerConfig.defaults(),
+  private final OpenMapTilesProfile profile = new OpenMapTilesProfile(translations, PlanetilerConfig.defaults(),
     Stats.inMemory());
 
   @Test

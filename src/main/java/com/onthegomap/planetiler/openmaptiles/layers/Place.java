@@ -33,26 +33,26 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
-import static com.onthegomap.planetiler.basemap.util.Utils.coalesce;
-import static com.onthegomap.planetiler.basemap.util.Utils.nullIfEmpty;
-import static com.onthegomap.planetiler.basemap.util.Utils.nullOrEmpty;
 import static com.onthegomap.planetiler.collection.FeatureGroup.SORT_KEY_BITS;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.coalesce;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.nullIfEmpty;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.nullOrEmpty;
 
 import com.carrotsearch.hppc.LongIntMap;
 import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
-import com.onthegomap.planetiler.basemap.util.LanguageUtils;
 import com.onthegomap.planetiler.collection.Hppc;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.geo.GeoUtils;
 import com.onthegomap.planetiler.geo.GeometryException;
 import com.onthegomap.planetiler.geo.PointIndex;
 import com.onthegomap.planetiler.geo.PolygonIndex;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
+import com.onthegomap.planetiler.openmaptiles.util.LanguageUtils;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.stats.Stats;
 import com.onthegomap.planetiler.util.Parse;
@@ -81,14 +81,14 @@ import org.locationtech.jts.geom.Point;
  */
 public class Place implements
   OpenMapTilesSchema.Place,
-  BasemapProfile.NaturalEarthProcessor,
+  OpenMapTilesProfile.NaturalEarthProcessor,
   Tables.OsmContinentPoint.Handler,
   Tables.OsmCountryPoint.Handler,
   Tables.OsmStatePoint.Handler,
   Tables.OsmIslandPoint.Handler,
   Tables.OsmIslandPolygon.Handler,
   Tables.OsmCityPoint.Handler,
-  BasemapProfile.FeaturePostProcessor {
+  OpenMapTilesProfile.FeaturePostProcessor {
 
   /*
    * Place labels locations and names come from OpenStreetMap, but we also join with natural

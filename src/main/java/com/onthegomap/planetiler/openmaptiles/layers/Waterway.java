@@ -33,23 +33,23 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
-import static com.onthegomap.planetiler.basemap.util.Utils.nullIfEmpty;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.nullIfEmpty;
 
 import com.carrotsearch.hppc.LongObjectHashMap;
 import com.google.common.util.concurrent.AtomicDouble;
 import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.FeatureMerge;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
-import com.onthegomap.planetiler.basemap.util.LanguageUtils;
-import com.onthegomap.planetiler.basemap.util.Utils;
 import com.onthegomap.planetiler.collection.Hppc;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.geo.GeometryException;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
+import com.onthegomap.planetiler.openmaptiles.util.LanguageUtils;
+import com.onthegomap.planetiler.openmaptiles.util.Utils;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.reader.osm.OsmElement;
 import com.onthegomap.planetiler.reader.osm.OsmReader;
@@ -70,10 +70,10 @@ import java.util.Map;
 public class Waterway implements
   OpenMapTilesSchema.Waterway,
   Tables.OsmWaterwayLinestring.Handler,
-  BasemapProfile.FeaturePostProcessor,
-  BasemapProfile.NaturalEarthProcessor,
-  BasemapProfile.OsmRelationPreprocessor,
-  BasemapProfile.OsmAllProcessor {
+  OpenMapTilesProfile.FeaturePostProcessor,
+  OpenMapTilesProfile.NaturalEarthProcessor,
+  OpenMapTilesProfile.OsmRelationPreprocessor,
+  OpenMapTilesProfile.OsmAllProcessor {
 
   /*
    * Uses Natural Earth at lower zoom-levels and OpenStreetMap at higher zoom levels.

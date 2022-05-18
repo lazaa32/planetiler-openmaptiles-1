@@ -33,21 +33,21 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
-import static com.onthegomap.planetiler.basemap.util.Utils.elevationTags;
-import static com.onthegomap.planetiler.basemap.util.Utils.nullIfEmpty;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.elevationTags;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.nullIfEmpty;
 
 import com.carrotsearch.hppc.LongIntMap;
 import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
-import com.onthegomap.planetiler.basemap.util.LanguageUtils;
 import com.onthegomap.planetiler.collection.Hppc;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.geo.GeometryException;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
+import com.onthegomap.planetiler.openmaptiles.util.LanguageUtils;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.stats.Stats;
 import com.onthegomap.planetiler.util.Parse;
@@ -70,11 +70,11 @@ import org.slf4j.LoggerFactory;
  * sql files</a>.
  */
 public class MountainPeak implements
-  BasemapProfile.NaturalEarthProcessor,
+  OpenMapTilesProfile.NaturalEarthProcessor,
   OpenMapTilesSchema.MountainPeak,
   Tables.OsmPeakPoint.Handler,
   Tables.OsmMountainLinestring.Handler,
-  BasemapProfile.FeaturePostProcessor {
+  OpenMapTilesProfile.FeaturePostProcessor {
 
   /*
    * Mountain peaks come from OpenStreetMap data and are ranked by importance (based on if they

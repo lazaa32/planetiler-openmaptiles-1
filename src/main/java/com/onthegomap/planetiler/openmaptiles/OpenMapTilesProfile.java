@@ -1,4 +1,4 @@
-package com.onthegomap.planetiler.basemap;
+package com.onthegomap.planetiler.openmaptiles;
 
 import static com.onthegomap.planetiler.geo.GeoUtils.EMPTY_LINE;
 import static com.onthegomap.planetiler.geo.GeoUtils.EMPTY_POINT;
@@ -8,12 +8,12 @@ import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.ForwardingProfile;
 import com.onthegomap.planetiler.Planetiler;
 import com.onthegomap.planetiler.Profile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
-import com.onthegomap.planetiler.basemap.layers.Transportation;
-import com.onthegomap.planetiler.basemap.layers.TransportationName;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.expression.MultiExpression;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
+import com.onthegomap.planetiler.openmaptiles.layers.Transportation;
+import com.onthegomap.planetiler.openmaptiles.layers.TransportationName;
 import com.onthegomap.planetiler.reader.SimpleFeature;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.reader.osm.OsmElement;
@@ -41,7 +41,7 @@ import java.util.List;
  * {@link FinishHandler} or post-process features in that layer before rendering the output tile by implementing
  * {@link FeaturePostProcessor}.
  */
-public class BasemapProfile extends ForwardingProfile {
+public class OpenMapTilesProfile extends ForwardingProfile {
 
   // IDs used in stats and logs for each input source, as well as argument/config file overrides to source locations
   public static final String LAKE_CENTERLINE_SOURCE = "lake_centerlines";
@@ -53,11 +53,11 @@ public class BasemapProfile extends ForwardingProfile {
   /** Index variant that filters out any table only used by layers that implement IgnoreWikidata class. */
   private final MultiExpression.Index<Boolean> wikidataMappings;
 
-  public BasemapProfile(Planetiler runner) {
+  public OpenMapTilesProfile(Planetiler runner) {
     this(runner.translations(), runner.config(), runner.stats());
   }
 
-  public BasemapProfile(Translations translations, PlanetilerConfig config, Stats stats) {
+  public OpenMapTilesProfile(Translations translations, PlanetilerConfig config, Stats stats) {
     List<String> onlyLayers = config.arguments().getList("only_layers", "Include only certain layers", List.of());
     List<String> excludeLayers = config.arguments().getList("exclude_layers", "Exclude certain layers", List.of());
 

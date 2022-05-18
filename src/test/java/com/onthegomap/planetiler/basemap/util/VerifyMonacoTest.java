@@ -1,4 +1,4 @@
-package com.onthegomap.planetiler.basemap.util;
+package com.onthegomap.planetiler.openmaptiles.util;
 
 import static com.onthegomap.planetiler.geo.GeoUtils.point;
 import static com.onthegomap.planetiler.util.Gzip.gzip;

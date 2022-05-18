@@ -1,4 +1,4 @@
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

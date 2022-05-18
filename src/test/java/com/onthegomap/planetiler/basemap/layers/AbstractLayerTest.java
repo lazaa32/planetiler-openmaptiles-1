@@ -1,21 +1,21 @@
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import static com.onthegomap.planetiler.TestUtils.assertSubmap;
 import static com.onthegomap.planetiler.TestUtils.newLineString;
 import static com.onthegomap.planetiler.TestUtils.newPoint;
 import static com.onthegomap.planetiler.TestUtils.rectangle;
-import static com.onthegomap.planetiler.basemap.BasemapProfile.OSM_SOURCE;
-import static com.onthegomap.planetiler.basemap.util.Utils.coalesce;
+import static com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile.OSM_SOURCE;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.coalesce;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.TestUtils;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.geo.GeoUtils;
 import com.onthegomap.planetiler.geo.GeometryException;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
 import com.onthegomap.planetiler.reader.SimpleFeature;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.reader.osm.OsmReader;
@@ -37,7 +37,7 @@ public abstract class AbstractLayerTest {
     .addTranslationProvider(wikidataTranslations);
 
   final PlanetilerConfig params = PlanetilerConfig.defaults();
-  final BasemapProfile profile = new BasemapProfile(translations, PlanetilerConfig.defaults(),
+  final OpenMapTilesProfile profile = new OpenMapTilesProfile(translations, PlanetilerConfig.defaults(),
     Stats.inMemory());
   final Stats stats = Stats.inMemory();
   final FeatureCollector.Factory featureCollectorFactory = new FeatureCollector.Factory(params, stats);

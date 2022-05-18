@@ -33,7 +33,7 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import static com.onthegomap.planetiler.util.MemoryEstimator.CLASS_HEADER_BYTES;
 import static com.onthegomap.planetiler.util.MemoryEstimator.POINTER_BYTES;
@@ -45,12 +45,12 @@ import com.carrotsearch.hppc.LongObjectMap;
 import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.FeatureMerge;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
 import com.onthegomap.planetiler.collection.Hppc;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.geo.GeoUtils;
 import com.onthegomap.planetiler.geo.GeometryException;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
 import com.onthegomap.planetiler.reader.SimpleFeature;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.reader.osm.OsmElement;
@@ -92,11 +92,11 @@ import org.slf4j.LoggerFactory;
  */
 public class Boundary implements
   OpenMapTilesSchema.Boundary,
-  BasemapProfile.NaturalEarthProcessor,
-  BasemapProfile.OsmRelationPreprocessor,
-  BasemapProfile.OsmAllProcessor,
-  BasemapProfile.FeaturePostProcessor,
-  BasemapProfile.FinishHandler {
+  OpenMapTilesProfile.NaturalEarthProcessor,
+  OpenMapTilesProfile.OsmRelationPreprocessor,
+  OpenMapTilesProfile.OsmAllProcessor,
+  OpenMapTilesProfile.FeaturePostProcessor,
+  OpenMapTilesProfile.FinishHandler {
 
   /*
    * Uses natural earth at lower zoom levels and OpenStreetMap at higher zoom levels.
@@ -296,7 +296,7 @@ public class Boundary implements
   @Override
   public void finish(String sourceName, FeatureCollector.Factory featureCollectors,
     Consumer<FeatureCollector.Feature> emit) {
-    if (BasemapProfile.OSM_SOURCE.equals(sourceName)) {
+    if (OpenMapTilesProfile.OSM_SOURCE.equals(sourceName)) {
       var timer = stats.startStage("boundaries");
       LongObjectMap<PreparedGeometry> countryBoundaries = prepareRegionPolygons();
 

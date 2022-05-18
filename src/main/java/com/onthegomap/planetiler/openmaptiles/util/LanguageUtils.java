@@ -33,10 +33,10 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.util;
+package com.onthegomap.planetiler.openmaptiles.util;
 
-import static com.onthegomap.planetiler.basemap.util.Utils.coalesce;
-import static com.onthegomap.planetiler.basemap.util.Utils.nullIfEmpty;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.coalesce;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.nullIfEmpty;
 
 import com.onthegomap.planetiler.util.Translations;
 import java.util.HashMap;

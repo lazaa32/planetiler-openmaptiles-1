@@ -33,15 +33,15 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import com.onthegomap.planetiler.FeatureCollector;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
-import com.onthegomap.planetiler.basemap.util.Utils;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.expression.MultiExpression;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
+import com.onthegomap.planetiler.openmaptiles.util.Utils;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.stats.Stats;
 import com.onthegomap.planetiler.util.Translations;
@@ -55,8 +55,8 @@ import com.onthegomap.planetiler.util.Translations;
 public class Water implements
   OpenMapTilesSchema.Water,
   Tables.OsmWaterPolygon.Handler,
-  BasemapProfile.NaturalEarthProcessor,
-  BasemapProfile.OsmWaterPolygonProcessor {
+  OpenMapTilesProfile.NaturalEarthProcessor,
+  OpenMapTilesProfile.OsmWaterPolygonProcessor {
 
   /*
    * At low zoom levels, use natural earth for oceans and major lakes, and at high zoom levels

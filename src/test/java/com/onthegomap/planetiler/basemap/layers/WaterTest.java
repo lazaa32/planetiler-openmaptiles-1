@@ -1,9 +1,9 @@
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import static com.onthegomap.planetiler.TestUtils.rectangle;
-import static com.onthegomap.planetiler.basemap.BasemapProfile.NATURAL_EARTH_SOURCE;
-import static com.onthegomap.planetiler.basemap.BasemapProfile.OSM_SOURCE;
-import static com.onthegomap.planetiler.basemap.BasemapProfile.WATER_POLYGON_SOURCE;
+import static com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile.NATURAL_EARTH_SOURCE;
+import static com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile.OSM_SOURCE;
+import static com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile.WATER_POLYGON_SOURCE;
 
 import com.onthegomap.planetiler.reader.SimpleFeature;
 import java.util.List;

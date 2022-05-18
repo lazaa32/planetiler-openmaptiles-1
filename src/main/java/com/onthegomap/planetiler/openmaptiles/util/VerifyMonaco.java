@@ -1,4 +1,4 @@
-package com.onthegomap.planetiler.basemap.util;
+package com.onthegomap.planetiler.openmaptiles.util;
 
 import com.onthegomap.planetiler.mbtiles.Mbtiles;
 import com.onthegomap.planetiler.mbtiles.Verify;

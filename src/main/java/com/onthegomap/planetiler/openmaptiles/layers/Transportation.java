@@ -33,9 +33,9 @@ Design license: CC-BY 4.0
 
 See https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md for details on usage
 */
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
-import static com.onthegomap.planetiler.basemap.util.Utils.*;
+import static com.onthegomap.planetiler.openmaptiles.util.Utils.*;
 import static com.onthegomap.planetiler.util.MemoryEstimator.CLASS_HEADER_BYTES;
 import static com.onthegomap.planetiler.util.MemoryEstimator.POINTER_BYTES;
 import static com.onthegomap.planetiler.util.MemoryEstimator.estimateSize;
@@ -44,13 +44,13 @@ import static java.util.Map.entry;
 import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.FeatureMerge;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
-import com.onthegomap.planetiler.basemap.generated.OpenMapTilesSchema;
-import com.onthegomap.planetiler.basemap.generated.Tables;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.expression.MultiExpression;
 import com.onthegomap.planetiler.geo.GeoUtils;
 import com.onthegomap.planetiler.geo.GeometryException;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
+import com.onthegomap.planetiler.openmaptiles.generated.OpenMapTilesSchema;
+import com.onthegomap.planetiler.openmaptiles.generated.Tables;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.reader.osm.OsmElement;
 import com.onthegomap.planetiler.reader.osm.OsmReader;
@@ -91,10 +91,10 @@ public class Transportation implements
   Tables.OsmRailwayLinestring.Handler,
   Tables.OsmShipwayLinestring.Handler,
   Tables.OsmHighwayPolygon.Handler,
-  BasemapProfile.NaturalEarthProcessor,
-  BasemapProfile.FeaturePostProcessor,
-  BasemapProfile.OsmRelationPreprocessor,
-  BasemapProfile.IgnoreWikidata {
+  OpenMapTilesProfile.NaturalEarthProcessor,
+  OpenMapTilesProfile.FeaturePostProcessor,
+  OpenMapTilesProfile.OsmRelationPreprocessor,
+  OpenMapTilesProfile.IgnoreWikidata {
 
   /*
    * Generates the shape for roads, trails, ferries, railways with detailed

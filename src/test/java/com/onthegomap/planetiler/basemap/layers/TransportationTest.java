@@ -1,16 +1,16 @@
-package com.onthegomap.planetiler.basemap.layers;
+package com.onthegomap.planetiler.openmaptiles.layers;
 
 import static com.onthegomap.planetiler.TestUtils.newLineString;
 import static com.onthegomap.planetiler.TestUtils.newPoint;
 import static com.onthegomap.planetiler.TestUtils.rectangle;
-import static com.onthegomap.planetiler.basemap.BasemapProfile.NATURAL_EARTH_SOURCE;
-import static com.onthegomap.planetiler.basemap.BasemapProfile.OSM_SOURCE;
+import static com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile.NATURAL_EARTH_SOURCE;
+import static com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile.OSM_SOURCE;
 
 import com.onthegomap.planetiler.FeatureCollector;
-import com.onthegomap.planetiler.basemap.BasemapProfile;
 import com.onthegomap.planetiler.config.Arguments;
 import com.onthegomap.planetiler.config.PlanetilerConfig;
 import com.onthegomap.planetiler.geo.GeometryException;
+import com.onthegomap.planetiler.openmaptiles.OpenMapTilesProfile;
 import com.onthegomap.planetiler.reader.SimpleFeature;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.reader.osm.OsmElement;
@@ -400,7 +400,7 @@ class TransportationTest extends AbstractLayerTest {
         "highway", "tertiary"
       ))));
 
-    var profileWithMinorRefs = new BasemapProfile(translations, PlanetilerConfig.from(Arguments.of(Map.of(
+    var profileWithMinorRefs = new OpenMapTilesProfile(translations, PlanetilerConfig.from(Arguments.of(Map.of(
       "transportation_name_minor_refs", "true"
     ))), Stats.inMemory());
 
@@ -1225,7 +1225,7 @@ class TransportationTest extends AbstractLayerTest {
 
   @Test
   void testTransportationNameLayerRequiresTransportationLayer() {
-    var profile = new BasemapProfile(translations, PlanetilerConfig.from(Arguments.of(
+    var profile = new OpenMapTilesProfile(translations, PlanetilerConfig.from(Arguments.of(
       "only_layers", "transportation_name"
     )), Stats.inMemory());
     SourceFeature feature = lineFeature(Map.of(

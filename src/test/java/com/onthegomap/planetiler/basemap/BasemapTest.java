@@ -1,17 +1,17 @@
-package com.onthegomap.planetiler.basemap;
+package com.onthegomap.planetiler.openmaptiles;
 
 import static com.onthegomap.planetiler.TestUtils.assertContains;
 import static com.onthegomap.planetiler.TestUtils.assertFeatureNear;
-import static com.onthegomap.planetiler.basemap.util.VerifyMonaco.MONACO_BOUNDS;
+import static com.onthegomap.planetiler.openmaptiles.util.VerifyMonaco.MONACO_BOUNDS;
 import static com.onthegomap.planetiler.util.Gzip.gunzip;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 import com.onthegomap.planetiler.TestUtils;
 import com.onthegomap.planetiler.VectorTile;
-import com.onthegomap.planetiler.basemap.util.VerifyMonaco;
 import com.onthegomap.planetiler.config.Arguments;
 import com.onthegomap.planetiler.mbtiles.Mbtiles;
+import com.onthegomap.planetiler.openmaptiles.util.VerifyMonaco;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Map;
@@ -30,12 +30,12 @@ import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 
 /**
- * End-to-end tests for basemap generation.
+ * End-to-end tests for openmaptiles generation.
  * <p>
  * Generates an entire map for the smallest openstreetmap extract available (Monaco) and asserts that expected output
  * features exist
  */
-class BasemapTest {
+class OpenMapTilesTest {
 
   @TempDir
   static Path tmpDir;
@@ -44,7 +44,7 @@ class BasemapTest {
   @BeforeAll
   public static void runPlanetiler() throws Exception {
     Path dbPath = tmpDir.resolve("output.mbtiles");
-    BasemapMain.run(Arguments.of(
+    OpenMapTilesMain.run(Arguments.of(
       // Override input source locations
       "osm_path", TestUtils.pathToResource("monaco-latest.osm.pbf"),
       "natural_earth_path", TestUtils.pathToResource("natural_earth_vector.sqlite.zip"),
